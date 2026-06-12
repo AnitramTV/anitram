@@ -3,121 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anitram | Road To Champion</title>
-  <style>
-    :root {
-      --gold: #DA963D;
-      --black: #050505;
-      --white: #ffffff;
-      --card: rgba(255, 255, 255, 0.06);
-    }
+  <title>Anitram | Links</title>
 
+  <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #1a1208 0%, #050505 42%, #000 100%);
-      color: var(--white);
+      background: radial-gradient(circle at top, #1a1207, #050505 55%, #000);
+      color: white;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 28px 18px;
+      align-items: center;
+      padding: 30px 18px;
+      overflow-x: hidden;
     }
 
-    .container {
+    .bg-logo {
+      position: fixed;
+      width: 520px;
+      max-width: 90vw;
+      opacity: 0.08;
+      filter: blur(6px);
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.04); }
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
       width: 100%;
       max-width: 430px;
+      padding: 28px;
+      border: 1px solid rgba(218,150,61,0.45);
+      border-radius: 28px;
+      background: rgba(10, 10, 10, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 45px rgba(218,150,61,0.18);
       text-align: center;
     }
 
-    .logo {
-      width: 145px;
-      height: 145px;
-      object-fit: contain;
-      border-radius: 50%;
-      margin-bottom: 14px;
-      filter: drop-shadow(0 0 18px rgba(218, 150, 61, 0.45));
-    }
-
     h1 {
-      font-size: 34px;
-      letter-spacing: 3px;
+      font-size: 38px;
+      letter-spacing: 4px;
       margin-bottom: 6px;
     }
 
     .subtitle {
-      color: var(--gold);
-      font-weight: bold;
-      margin-bottom: 22px;
-      letter-spacing: 1px;
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
+      color: #DA963D;
+      font-weight: 800;
+      letter-spacing: 2px;
       margin-bottom: 24px;
+      font-size: 14px;
     }
 
-    .btn {
-      display: block;
-      text-decoration: none;
-      color: var(--white);
-      background: var(--card);
-      border: 1.5px solid var(--gold);
-      border-radius: 16px;
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
       padding: 15px 18px;
+      margin: 13px 0;
+      color: white;
+      text-decoration: none;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(218,150,61,0.55);
+      box-shadow: 0 0 18px rgba(218,150,61,0.10);
+      transition: 0.25s;
       font-size: 17px;
-      font-weight: bold;
-      box-shadow: 0 0 12px rgba(218, 150, 61, 0.18);
-      transition: 0.25s ease;
+      font-weight: 800;
     }
 
-    .btn:hover {
-      transform: scale(1.03);
-      background: rgba(218, 150, 61, 0.16);
-      box-shadow: 0 0 22px rgba(218, 150, 61, 0.42);
+    .link:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: rgba(218,150,61,0.18);
+      box-shadow: 0 0 28px rgba(218,150,61,0.35);
+    }
+
+    .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      object-fit: cover;
     }
 
     .info {
-      border: 1px solid rgba(218, 150, 61, 0.55);
-      border-radius: 18px;
-      padding: 16px;
-      background: rgba(0, 0, 0, 0.35);
-      font-size: 15px;
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(218,150,61,0.45);
+      background: rgba(0,0,0,0.35);
+      font-size: 14px;
       line-height: 1.6;
     }
 
     .gold {
-      color: var(--gold);
-      font-weight: bold;
+      color: #DA963D;
+      font-weight: 800;
     }
 
     footer {
       margin-top: 18px;
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.55);
+      opacity: 0.55;
     }
   </style>
 </head>
+
 <body>
-  <main class="container">
-    <img class="logo" src="assets/logo.png" alt="Logo Anitram" />
 
+  <img class="bg-logo" src="logo.png" alt="Logo Anitram">
+
+  <main class="card">
     <h1>ANITRAM</h1>
-    <p class="subtitle">ROAD TO CHAMPION</p>
+    <div class="subtitle">ROAD TO CHAMPION</div>
 
-    <section class="links">
-      <a class="btn" href="https://discord.gg/yEGvZ927eE" target="_blank">💬 Entra nel Discord</a>
-      <a class="btn" href="https://www.twitch.tv/anitramtv" target="_blank">📺 Seguimi su Twitch</a>
-      <a class="btn" href="https://x.com/AnitramTV" target="_blank">𝕏 Seguimi su X</a>
-      <a class="btn" href="https://www.tiktok.com/@aniitram20?is_from_webapp=1&sender_device=pc" target="_blank">🎮 Seguimi su TikTok</a>
-    </section>
+    <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank">
+      <img class="icon" src="discord.webp" alt="Discord">
+      Entra nel Discord
+    </a>
+
+    <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank">
+      <img class="icon" src="twitch.jpg" alt="Twitch">
+      Seguimi su Twitch
+    </a>
+
+    <a class="link" href="https://x.com/AnitramTV" target="_blank">
+      <img class="icon" src="x.jpg" alt="X">
+      Seguimi su X
+    </a>
+
+    <a class="link" href="https://www.tiktok.com/@aniitram20?is_from_webapp=1&sender_device=pc" target="_blank">
+      <img class="icon" src="tiktok.png" alt="TikTok">
+      Seguimi su TikTok
+    </a>
 
     <section class="info">
       <p><span class="gold">LIVE TIKTOK</span> ogni sera</p>
@@ -127,5 +157,6 @@
 
     <footer>© Anitram</footer>
   </main>
+
 </body>
 </html>
