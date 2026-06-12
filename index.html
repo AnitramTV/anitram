@@ -1,162 +1,235 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anitram | Links</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anitram | Links</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #1a1207, #050505 55%, #000);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 18px;
-      overflow-x: hidden;
-    }
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1208 0%, #050505 45%, #000 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 18px;
+  overflow-x: hidden;
+}
 
-    .bg-logo {
-      position: fixed;
-      width: 520px;
-      max-width: 90vw;
-      opacity: 0.08;
-      filter: blur(6px);
-      z-index: 0;
-      animation: float 6s ease-in-out infinite;
-    }
+/* LOGO GRANDE SFUMATO DIETRO */
+.bg-logo {
+  position: fixed;
+  width: 780px;
+  max-width: 120vw;
+  opacity: 0.13;
+  filter: blur(16px);
+  z-index: 0;
+  animation: floatLogo 6s ease-in-out infinite;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.04); }
-    }
+@keyframes floatLogo {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.04);
+  }
+}
 
-    .card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 430px;
-      padding: 28px;
-      border: 1px solid rgba(218,150,61,0.45);
-      border-radius: 28px;
-      background: rgba(10, 10, 10, 0.72);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 0 45px rgba(218,150,61,0.18);
-      text-align: center;
-    }
+/* CONTENITORE */
+.card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 430px;
+  padding: 34px 24px 28px;
+  border-radius: 34px;
+  background: rgba(8, 8, 8, 0.76);
+  border: 1px solid rgba(218, 150, 61, 0.42);
+  box-shadow: 0 0 70px rgba(218, 150, 61, 0.22);
+  backdrop-filter: blur(22px);
+  text-align: center;
+}
 
-    h1 {
-      font-size: 38px;
-      letter-spacing: 4px;
-      margin-bottom: 6px;
-    }
+/* LOGO PICCOLO SOPRA */
+.top-logo {
+  width: 105px;
+  height: 105px;
+  object-fit: contain;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 22px rgba(218,150,61,0.45));
+}
 
-    .subtitle {
-      color: #DA963D;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 24px;
-      font-size: 14px;
-    }
+/* TITOLI */
+h1 {
+  font-size: 40px;
+  letter-spacing: 5px;
+  font-weight: 900;
+}
 
-    .link {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      width: 100%;
-      padding: 15px 18px;
-      margin: 13px 0;
-      color: white;
-      text-decoration: none;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(218,150,61,0.55);
-      box-shadow: 0 0 18px rgba(218,150,61,0.10);
-      transition: 0.25s;
-      font-size: 17px;
-      font-weight: 800;
-    }
+.subtitle {
+  margin-top: 7px;
+  margin-bottom: 28px;
+  color: #DA963D;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
 
-    .link:hover {
-      transform: translateY(-3px) scale(1.02);
-      background: rgba(218,150,61,0.18);
-      box-shadow: 0 0 28px rgba(218,150,61,0.35);
-    }
+/* PULSANTI */
+.link {
+  height: 68px;
+  margin: 14px 0;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: white;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
+  border: 1px solid rgba(218,150,61,0.55);
+  box-shadow: 0 0 18px rgba(218,150,61,0.10);
+  font-size: 18px;
+  font-weight: 900;
+  transition: 0.25s ease;
+}
 
-    .icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      object-fit: cover;
-    }
+.link:hover {
+  transform: translateY(-3px) scale(1.025);
+  background: rgba(218,150,61,0.16);
+  box-shadow: 0 0 32px rgba(218,150,61,0.36);
+}
 
-    .info {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(218,150,61,0.45);
-      background: rgba(0,0,0,0.35);
-      font-size: 14px;
-      line-height: 1.6;
-    }
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-    .gold {
-      color: #DA963D;
-      font-weight: 800;
-    }
+.icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
 
-    footer {
-      margin-top: 18px;
-      font-size: 12px;
-      opacity: 0.55;
-    }
-  </style>
+.link span {
+  flex: 1;
+  text-align: left;
+}
+
+/* INFO */
+.info {
+  margin-top: 26px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(218,150,61,0.08);
+  border: 1px solid rgba(218,150,61,0.38);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.gold {
+  color: #DA963D;
+  font-weight: 900;
+}
+
+footer {
+  margin-top: 18px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
+
+/* TELEFONO */
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 18px 24px;
+    border-radius: 28px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .top-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .link {
+    height: 64px;
+    font-size: 17px;
+  }
+
+  .bg-logo {
+    width: 620px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <img class="bg-logo" src="logo.png" alt="Logo Anitram">
+<img class="bg-logo" src="logo.png" alt="Logo Anitram sfondo">
 
-  <main class="card">
-    <h1>ANITRAM</h1>
-    <div class="subtitle">ROAD TO CHAMPION</div>
+<main class="card">
 
-    <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank">
-      <img class="icon" src="discord.webp" alt="Discord">
-      Entra nel Discord
-    </a>
+  <img class="top-logo" src="logo.png" alt="Logo Anitram">
 
-    <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank">
-      <img class="icon" src="twitch.jpg" alt="Twitch">
-      Seguimi su Twitch
-    </a>
+  <h1>ANITRAM</h1>
+  <div class="subtitle">Entra per rimanere aggiornato</div>
 
-    <a class="link" href="https://x.com/AnitramTV" target="_blank">
-      <img class="icon" src="x.jpg" alt="X">
-      Seguimi su X
-    </a>
+  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank">
+    <div class="icon-box">
+      <img class="icon" src="icons8-nuovo-logo-discord-48.png" alt="Discord">
+    </div>
+    <span>Discord</span>
+  </a>
 
-    <a class="link" href="https://www.tiktok.com/@aniitram20?is_from_webapp=1&sender_device=pc" target="_blank">
-      <img class="icon" src="tiktok.png" alt="TikTok">
-      Seguimi su TikTok
-    </a>
+  <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank">
+    <div class="icon-box">
+      <img class="icon" src="icons8-twitch-48.png" alt="Twitch">
+    </div>
+    <span>Twitch</span>
+  </a>
 
-    <section class="info">
-      <p><span class="gold">LIVE TIKTOK</span> ogni sera</p>
-      <p>ID Rocket League: <span class="gold">TkTok_Anitram</span></p>
-      <p>Entra nella community e gioca con noi.</p>
-    </section>
+  <a class="link" href="https://x.com/AnitramTV" target="_blank">
+    <div class="icon-box">
+      <img class="icon" src="icons8-twitterx-48.png" alt="X">
+    </div>
+    <span>X</span>
+  </a>
 
-    <footer>© Anitram</footer>
-  </main>
+  <a class="link" href="https://www.tiktok.com/@aniitram20?is_from_webapp=1&sender_device=pc" target="_blank">
+    <div class="icon-box">
+      <img class="icon" src="icons8-tiktok-48.png" alt="TikTok">
+    </div>
+    <span>TikTok</span>
+  </a>
+
+  <section class="info">
+    <p><span class="gold">LIVE TIKTOK</span> ogni sera</p>
+    <p>ID Rocket League: <span class="gold">TkTok_Anitram</span></p>
+    <p>Entra nella community e gioca con noi.</p>
+  </section>
+
+  <footer>© Anitram</footer>
+
+</main>
 
 </body>
 </html>
