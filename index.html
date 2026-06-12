@@ -3,191 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anitram</title>
+<title>Anitram - Road to Champion</title>
+
+<link rel="preload" href="Logo Anitram.png" as="image">
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Font nativi del telefono: zero download, zero attesa */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-body{
-background:#000;
-color:white;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-position:relative;
+body {
+  min-height: 100svh;
+  background: radial-gradient(circle at top, #1c1206 0%, #050505 45%, #000 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow-y: auto; /* Evita blocchi se lo schermo è minuscolo */
 }
 
-/* LUCE ORO DIETRO */
-body::before{
-content:"";
-position:fixed;
-width:700px;
-height:700px;
-background:#DA963D;
-filter:blur(250px);
-opacity:0.15;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-z-index:0;
+.container {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.container{
-position:relative;
-z-index:2;
-width:420px;
-text-align:center;
+.logo {
+  width: 78px;
+  height: auto;
+  margin-bottom: 12px;
+  /* Ombra alleggerita per non rallentare i processori dei telefoni vecchi */
+  filter: drop-shadow(0 0 12px rgba(218,150,61,.4));
 }
 
-.logo{
-width:130px;
-margin-bottom:25px;
-filter:
-drop-shadow(0 0 15px rgba(218,150,61,.7))
-drop-shadow(0 0 30px rgba(218,150,61,.3));
+h1 {
+  font-size: 36px;
+  letter-spacing: 5px;
+  font-weight: 900;
+  margin-bottom: 6px;
 }
 
-h1{
-font-size:72px;
-font-weight:900;
-letter-spacing:4px;
-margin-bottom:15px;
-text-shadow:0 0 15px rgba(255,255,255,.2);
+.subtitle {
+  color: #DA963D;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
 }
 
-.subtitle{
-color:#DA963D;
-letter-spacing:5px;
-font-weight:700;
-margin-bottom:35px;
+.link {
+  width: 100%;
+  height: 54px;
+  margin-bottom: 10px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: white;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(218,150,61,.5);
+  font-size: 17px;
+  font-weight: 700;
+  /* Dice al telefono di preparare la GPU per un'animazione fluida */
+  will-change: transform, background;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.link{
-display:flex;
-align-items:center;
-gap:18px;
-width:100%;
-padding:14px 18px;
-margin-bottom:16px;
-border:1px solid rgba(218,150,61,.7);
-border-radius:24px;
-background:rgba(255,255,255,.03);
-backdrop-filter:blur(10px);
-text-decoration:none;
-color:white;
-font-size:22px;
-font-weight:700;
-transition:.25s;
+/* L'effetto hover si attiva SOLO sui computer, evita bug grafici al tocco su mobile */
+@media (hover: hover) {
+  .link:hover {
+    background: rgba(218, 150, 61, 0.15);
+    transform: translateY(-2px);
+  }
 }
 
-.link:hover{
-transform:translateY(-3px);
-box-shadow:0 0 20px rgba(218,150,61,.35);
+.icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
-.icon{
-width:46px;
-height:46px;
-border-radius:14px;
-object-fit:cover;
+.info {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(218,150,61,.35);
+  background: rgba(255,255,255,.02);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.live-box{
-margin-top:25px;
-padding:25px;
-border-radius:25px;
-border:1px solid rgba(218,150,61,.7);
-background:rgba(255,255,255,.02);
+.gold {
+  color: #DA963D;
+  font-weight: 800;
 }
 
-.live-title{
-color:#DA963D;
-font-weight:900;
-font-size:30px;
-margin-bottom:12px;
+footer {
+  margin-top: 24px;
+  font-size: 11px;
+  opacity: .4;
 }
 
-.live-box p{
-font-size:20px;
-line-height:1.6;
-}
-
-.highlight{
-color:#DA963D;
-font-weight:bold;
-}
-
-.footer{
-margin-top:25px;
-opacity:.6;
-font-size:14px;
+/* Compattezza per schermi molto corti */
+@media(max-height: 660px){
+  .logo { width: 60px; }
+  h1 { font-size: 30px; }
+  .link { height: 48px; font-size: 15px; }
+  .icon { width: 28px; height: 28px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<main class="container">
 
-<img src="Logo Anitram.png" class="logo">
+  <img src="Logo Anitram.png" class="logo" alt="Logo Anitram" decoding="async">
 
-<h1>ANITRAM</h1>
+  <h1>ANITRAM</h1>
+  <div class="subtitle">ROAD TO CHAMPION</div>
 
-<div class="subtitle">
-ENTRA PER RIMANERE AGGIORNATO
-</div>
+  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank" rel="noopener">
+    <img src="icons8-nuovo-logo-discord-48.png" class="icon" alt="" decoding="async" loading="eager">
+    <span>Discord</span>
+  </a>
 
-<a href="https://discord.gg/TUO-LINK" class="link">
-<img src="icons8-nuovo-logo-discord-48.png" class="icon">
-<span>Discord</span>
-</a>
+  <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank" rel="noopener">
+    <img src="icons8-twitch-48.png" class="icon" alt="" decoding="async" loading="eager">
+    <span>Twitch</span>
+  </a>
 
-<a href="https://twitch.tv/TUO-NOME" class="link">
-<img src="icons8-twitch-48.png" class="icon">
-<span>Twitch</span>
-</a>
+  <a class="link" href="https://x.com/AnitramTV" target="_blank" rel="noopener">
+    <img src="icons8-twitterx-48.png" class="icon" alt="" decoding="async">
+    <span>X</span>
+  </a>
 
-<a href="https://x.com/TUO-NOME" class="link">
-<img src="icons8-twitterx-48.png" class="icon">
-<span>X</span>
-</a>
+  <a class="link" href="https://www.tiktok.com/@aniitram20" target="_blank" rel="noopener">
+    <img src="icons8-tiktok-48.png" class="icon" alt="" decoding="async">
+    <span>TikTok</span>
+  </a>
 
-<a href="https://tiktok.com/@TkTok_Anitram" class="link">
-<img src="icons8-tiktok-48.png" class="icon">
-<span>TikTok</span>
-</a>
+  <div class="info">
+    <p><span class="gold">LIVE TIKTOK</span> ogni sera</p>
+    <p>ID Rocket League: <span class="gold">TkTok_Anitram</span></p>
+  </div>
 
-<div class="live-box">
-<div class="live-title">LIVE TIKTOK</div>
+</main>
 
-<p>
-ogni sera
-</p>
-
-<p>
-ID Rocket League:
-<span class="highlight">
-TkTok_Anitram
-</span>
-</p>
-
-<p>
-Entra nella community e gioca con noi.
-</p>
-</div>
-
-<div class="footer">
-© Anitram
-</div>
-
-</div>
+<footer>© Anitram</footer>
 
 </body>
 </html>
