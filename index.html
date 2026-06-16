@@ -230,24 +230,24 @@ footer {
   <img src="Logo Anitram.png" class="logo" alt="Logo Anitram" decoding="async">
 
   <h1>ANITRAM</h1>
-  <div class="subtitle">ENTRATE PER RIMANERE AGGIORNATI</div>
+  <div class="subtitle">ROAD TO CHAMPION</div>
 
-  <!-- NUOVO LINK: PRIMO DI TUTTI - GIVEAWAY -->
+  <!-- PRIMO LINK: GIVEAWAY CON SBLOCCO -->
   <a class="link giveaway-btn" href="#" id="giveawayTrigger">
     <img src="Logo Instant gaming.png" class="icon" alt="" decoding="async">
     <span>🎁 Giveaway Instant Gaming</span>
+  </a>
+
+  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank" rel="noopener">
+    <img src="icons8-nuovo-logo-discord-48.png" class="icon" alt="" decoding="async" loading="eager">
+    <span>Discord</span>
   </a>
 
   <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank" rel="noopener">
     <img src="icons8-twitch-48.png" class="icon" alt="" decoding="async" loading="eager">
     <span>Twitch</span>
   </a>
-  
-  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank" rel="noopener">
-    <img src="icons8-nuovo-logo-discord-48.png" class="icon" alt="" decoding="async" loading="eager">
-    <span>Discord</span>
-  </a
-    
+
   <a class="link" href="https://x.com/AnitramTV" target="_blank" rel="noopener">
     <img src="icons8-twitterx-48.png" class="icon" alt="" decoding="async">
     <span>X</span>
@@ -258,6 +258,7 @@ footer {
     <span>TikTok</span>
   </a>
 
+  <!-- LINK STANDARD INSTANT GAMING STORE -->
   <a class="link" href="https://www.instant-gaming.com/?igr=anitram" target="_blank" rel="noopener">
     <img src="Logo Instant gaming.png" class="icon" alt="" decoding="async">
     <span>Instant Gaming</span>
@@ -280,14 +281,14 @@ footer {
       Per partecipare al Giveaway di Instant Gaming devi prima supportarmi seguendo il canale Twitch!
     </div>
     
-    <!-- Step 1: Segui su Twitch -->
+    <!-- Step 1: Reindirizzamento a Twitch -->
     <a href="https://www.twitch.tv/anitramtv" target="_blank" class="modal-btn btn-twitch" id="twitchFollowBtn">
       <img src="icons8-twitch-48.png" style="width:20px; height:20px;" alt="">
       Segui su Twitch
     </a>
     
-    <!-- Step 2: Ottieni Link (Nascosto all'inizio, appare dopo il click su Twitch) -->
-    <a href="https://www.instant-gaming.com/?igr=anitram" target="_blank" class="modal-btn btn-claim" id="claimRewardBtn">
+    <!-- Step 2: Link reale del Giveaway (Sbloccato dopo il click) -->
+    <a href="https://www.instant-gaming.com/it/giveaway/INSTANTGAMINGITALIA?igr=anitram" target="_blank" class="modal-btn btn-claim" id="claimRewardBtn">
       🍀 Entra nel Giveaway!
     </a>
     
@@ -303,7 +304,7 @@ footer {
   const twitchBtn = document.getElementById('twitchFollowBtn');
   const claimBtn = document.getElementById('claimRewardBtn');
 
-  // Apri il popup quando cliccano sul Giveaway
+  // Apri il popup
   trigger.addEventListener('click', (e) => {
     e.preventDefault();
     modal.classList.add('active');
@@ -314,16 +315,15 @@ footer {
     modal.classList.remove('active');
   });
 
-  // Quando l'utente clicca su "Segui su Twitch"
+  // Quando cliccano su "Segui su Twitch"
   twitchBtn.addEventListener('click', () => {
-    // Aspetta un secondo (mentre l'utente va su Twitch) e poi mostra il bottone del Giveaway sbloccato
     setTimeout(() => {
       twitchBtn.style.display = 'none'; // Nasconde il tasto Twitch
-      claimBtn.style.display = 'flex';  // Mostra il tasto per andare al Giveaway
+      claimBtn.style.display = 'flex';  // Mostra il tasto con il link ufficiale del Giveaway
     }, 1000);
   });
   
-  // Chiudi il popup se cliccano sul link finale del giveaway
+  // Chiudi tutto dopo il click finale sul Giveaway
   claimBtn.addEventListener('click', () => {
     modal.classList.remove('active');
   });
