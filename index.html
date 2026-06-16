@@ -78,10 +78,20 @@ h1 {
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
+/* Stile speciale ed evidenziato per il Giveaway */
+.link.giveaway-btn {
+  background: rgba(218, 150, 61, 0.15);
+  border: 2px solid #DA963D;
+  box-shadow: 0 0 15px rgba(218, 150, 61, 0.2);
+}
+
 @media (hover: hover) {
   .link:hover {
     background: rgba(218, 150, 61, 0.15);
     transform: translateY(-2px);
+  }
+  .link.giveaway-btn:hover {
+    background: rgba(218, 150, 61, 0.3);
   }
 }
 
@@ -113,6 +123,97 @@ footer {
   opacity: .4;
 }
 
+/* STILI DEL POPUP (MODAL) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #111;
+  border: 2px solid #DA963D;
+  border-radius: 24px;
+  padding: 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(218, 150, 61, 0.3);
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.modal-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-twitch {
+  background: #9146FF;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.btn-twitch:hover { background: #772ce8; }
+
+.btn-claim {
+  background: #DA963D;
+  color: black;
+  display: none; /* Appare solo dopo il click su Twitch */
+}
+
+.btn-claim:hover { background: #b87a2b; }
+
+.close-modal {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
 @media(max-height: 660px){
   .logo { width: 60px; }
   h1 { font-size: 30px; }
@@ -129,18 +230,24 @@ footer {
   <img src="Logo Anitram.png" class="logo" alt="Logo Anitram" decoding="async">
 
   <h1>ANITRAM</h1>
-  <div class="subtitle">ROAD TO CHAMPION</div>
+  <div class="subtitle">ENTRATE PER RIMANERE AGGIORNATI</div>
 
-  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank" rel="noopener">
-    <img src="icons8-nuovo-logo-discord-48.png" class="icon" alt="" decoding="async" loading="eager">
-    <span>Discord</span>
+  <!-- NUOVO LINK: PRIMO DI TUTTI - GIVEAWAY -->
+  <a class="link giveaway-btn" href="#" id="giveawayTrigger">
+    <img src="Logo Instant gaming.png" class="icon" alt="" decoding="async">
+    <span>🎁 Giveaway Instant Gaming</span>
   </a>
 
   <a class="link" href="https://www.twitch.tv/anitramtv" target="_blank" rel="noopener">
     <img src="icons8-twitch-48.png" class="icon" alt="" decoding="async" loading="eager">
     <span>Twitch</span>
   </a>
-
+  
+  <a class="link" href="https://discord.gg/yEGvZ927eE" target="_blank" rel="noopener">
+    <img src="icons8-nuovo-logo-discord-48.png" class="icon" alt="" decoding="async" loading="eager">
+    <span>Discord</span>
+  </a
+    
   <a class="link" href="https://x.com/AnitramTV" target="_blank" rel="noopener">
     <img src="icons8-twitterx-48.png" class="icon" alt="" decoding="async">
     <span>X</span>
@@ -164,6 +271,63 @@ footer {
 </main>
 
 <footer>© Anitram</footer>
+
+<!-- STRUTTURA DELLA PAGINA DI SBLOCCO (POPUP) -->
+<div class="modal-overlay" id="giveawayModal">
+  <div class="modal-content">
+    <div class="modal-title">🔒 Sblocca il Giveaway!</div>
+    <div class="modal-text">
+      Per partecipare al Giveaway di Instant Gaming devi prima supportarmi seguendo il canale Twitch!
+    </div>
+    
+    <!-- Step 1: Segui su Twitch -->
+    <a href="https://www.twitch.tv/anitramtv" target="_blank" class="modal-btn btn-twitch" id="twitchFollowBtn">
+      <img src="icons8-twitch-48.png" style="width:20px; height:20px;" alt="">
+      Segui su Twitch
+    </a>
+    
+    <!-- Step 2: Ottieni Link (Nascosto all'inizio, appare dopo il click su Twitch) -->
+    <a href="https://www.instant-gaming.com/?igr=anitram" target="_blank" class="modal-btn btn-claim" id="claimRewardBtn">
+      🍀 Entra nel Giveaway!
+    </a>
+    
+    <button class="close-modal" id="closeModalBtn">Chiudi</button>
+  </div>
+</div>
+
+<!-- SCRIPT LOGICA DI SBLOCCO -->
+<script>
+  const trigger = document.getElementById('giveawayTrigger');
+  const modal = document.getElementById('giveawayModal');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const twitchBtn = document.getElementById('twitchFollowBtn');
+  const claimBtn = document.getElementById('claimRewardBtn');
+
+  // Apri il popup quando cliccano sul Giveaway
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('active');
+  });
+
+  // Chiudi il popup
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  // Quando l'utente clicca su "Segui su Twitch"
+  twitchBtn.addEventListener('click', () => {
+    // Aspetta un secondo (mentre l'utente va su Twitch) e poi mostra il bottone del Giveaway sbloccato
+    setTimeout(() => {
+      twitchBtn.style.display = 'none'; // Nasconde il tasto Twitch
+      claimBtn.style.display = 'flex';  // Mostra il tasto per andare al Giveaway
+    }, 1000);
+  });
+  
+  // Chiudi il popup se cliccano sul link finale del giveaway
+  claimBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>
